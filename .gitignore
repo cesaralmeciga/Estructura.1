@@ -7,8 +7,9 @@ package problema3;
 import java.util.*;
 import sun.security.util.Length;
 /**
- *
- * @author kyleAnthony
+ * Punto 2 del parcial
+ * @author CesarAlméciga
+ * @date 01-11-17
  */
 public class Problema3 {
 
