@@ -1,0 +1,99 @@
+import java.util.*;
+
+public class GameOfLife {
+	
+	public int[][] cellular_automata;
+	
+	public GameOfLife(int width, int heigth)
+	{
+		this.cellular_automata = new int [heigth][width];
+		this.random_population(width, heigth);
+	}
+	
+	public void random_population(int heigth, int width){
+		
+		Random rd= new Random();
+		double alive_probality = 0.15;
+		
+		for (int i = 0; i < heigth; i++) 
+		{
+			for (int j = 0; j < width; j++) 
+			{
+				this.cellular_automata[i][j] = 
+						rd.nextDouble() < alive_probality ? 1 : 0 ;
+				
+			}
+
+		}
+	}
+		
+
+	public void nextIteration(){
+	int counter;
+	int n1= this.cellular_automata.length;
+	int n2= this.cellular_automata.length;
+	
+	for (int i = 0; i < n1; i++) {
+		for (int j = 0; j < n2; j++) {
+			
+			counter = this.cellular_automata [ (i - 1 + n1) % n1][(j - 1 + n2) % n2]+ 
+					  this.cellular_automata [(i - 1 + n1) % n1][j]+
+					  this.cellular_automata [( i - 1 + n1) % n1] [(j + 1) % n2]+
+					  this.cellular_automata [i][(j - 1 + n2) % n2]+
+					  this.cellular_automata [i] [(j + 1) % n2]+ 
+					  this.cellular_automata [(i + 1) % n1][(j-1+n2) % n2]+
+					  this.cellular_automata [(i + 1) % n1] [j]+ 
+					  this.cellular_automata [(i + 1)%n1][(j + 1) %n2];
+			
+			if(this.cellular_automata[i][j]==1)
+				this.cellular_automata[i][j] = counter < 2 || counter > 3 ? 0:1;
+				else
+					this.cellular_automata[i][j] = counter == 3 ? 1:0;
+			}
+		}
+	
+	}
+}
+
+
+
+import processing.core.PApplet;
+public class GUI_GoL extends PApplet {
+	
+	public static void main(String [] Args ){
+	PApplet.main("GUI_GoL");	
+	
+
+	}
+	int square_size = 8, width=50, heigth= 50;
+	GameOfLife ca = new GameOfLife (width, heigth );
+	
+	public void settings(){
+		size(width*square_size, heigth * square_size);
+		
+	}
+	
+	public void draw(){
+		
+		background(50);
+		
+		for (int i = 0; i < heigth; i++) {
+			for (int j = 0; j < width; j++) {
+				
+				if (ca.cellular_automata[i][j]==1)
+					fill(255,0,0);
+				else 
+					fill(0);
+				
+				rect(j * square_size, i * square_size, square_size, square_size);
+			}
+			try{
+				Thread.sleep(20);
+				ca.nextIteration();
+				
+			}
+			catch (Exception e){e.printStackTrace();}
+			
+		}
+	}
+}
