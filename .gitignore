@@ -1,22 +1,56 @@
-# Compiled class file
-*.class
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package problema3;
+import java.util.*;
+import sun.security.util.Length;
+/**
+ *
+ * @author kyleAnthony
+ */
+public class Problema3 {
 
-# Log file
-*.log
 
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Digite tamaño del arreglo");
+        int tm = sc.nextInt();
+        System.out.println("Digite los valores del arreglo");
+        int Array [] = new int [tm];
+        int Array_1[] = new int [tm];
+        
+        for (int i = 0; i < Array.length; i++) {
+            
+            Array[i] = sc.nextInt();
+            
+        }
+        
+        
+        for (int i = 0; i < Array.length ; i++) {
+            int Valor = 1;
+            for (int j = 0; j < Array.length; j++) {
+                
+               if(i!=j)
+               {
+                   
+                   Valor *= Array[j];
+                   Array_1[i] = Valor;
+                   
+               }  
+            }
+            
+           
+        }
+        
+         for (int k = 0; k < Array_1.length; k++) {
+                    
+                    System.out.println(Array_1[k]);
+                    
+                }
+        
+    }
+    
+}
