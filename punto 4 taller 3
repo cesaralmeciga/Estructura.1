@@ -1,0 +1,54 @@
+#include<iostream>
+#include <string>
+#include <sstream>
+
+using namespace std;
+
+// Metodo para pasar de entero a string
+string NumberToString(int pNumber){
+ ostringstream oOStrStream;
+ oOStrStream << pNumber;
+ return oOStrStream.str();
+}
+
+int main (int argc, char* argv[]){
+// ingreso del tamaño y definicion de las dimenciones de la matriz y su transpuesta
+int m = 0 ;
+cout << "ingrese las dimenciones de la Matriz: ";
+cin >> m ;
+int matrizA [m][m];
+int matrizB [m][m];
+	//llenar la matriz
+	for (int i=0;i<m;i++){
+		for(int j=0;j<m;j++){
+		cout << "ingrese el dato: ";
+		cin >> matrizA[i][j];
+		}
+	}
+	cout <<"\n";
+	// Imprime la matriz original
+	string x;
+	for (int i=0;i<m ;i++){
+		x = "";
+		for (int j= 0 ;j<m ;j++){
+			x = x + "[" + NumberToString(matrizA[i][j])+ "]";
+		}
+		cout << x + "\n";	
+	}
+	//LLena la transpuesta de la matriz original
+	for (int i=0;i<m;i++){
+		for(int j=0;j<m;j++){
+		matrizB [j][i]=matrizA[j][i]; // transpuesta
+		}
+	}
+	
+	cout << "\n\nEspejo: \n\n";
+	// Imprime la Transpuesta de la matriz original
+	for (int i=0;i<m ;i++){
+		x = "";
+		for (int j= 0 ;j<m ;j++){
+			x = x + "[" + NumberToString(matrizB[j][i])+ "]";
+		}
+		cout << x + "\n";	
+	}
+}
