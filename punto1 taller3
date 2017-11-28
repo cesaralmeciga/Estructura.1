@@ -1,15 +1,15 @@
-'''
-Created on 24 nov. 2017
 
-@author: Calmecigadi
-'''
+#Created on 24 nov. 2017
+#program that prints a diamond-shaped matrix
+#@author: Calmecigadi
+
 import random
 
 matriz = []
 
-filas = int(input("Tamano del arreglo: \n"))
+filas = int(input("Tamano del arreglo: \n")) #array lenght
 columnas = filas
-
+#instantiate conditions to print the diamond
 for f in range(0,filas):
     matriz.append([0]*columnas)
     
