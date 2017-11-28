@@ -1,0 +1,84 @@
+//
+import java.util.Scanner;
+
+public class triqui
+{
+ public static void main(String[] args)
+ {
+ 
+  Scanner leer = new Scanner(System.in);
+  System.out.println("Este programa genera una matriz dependiendo del numero ingresado y hace que la imprime en forma de caracol\n");
+  System.out.println("digite el numero del tamaño de la dimension:");
+  int tamaño = leer.nextInt();
+  int n, x, i, y;
+  int c = 0;
+  int inicio = 0;
+  int limite = tamaño-1;
+  int numero_buscar;
+  
+  int [][] matriz = new int [tamaño][tamaño];
+  
+  //caracol
+  for(n = 1; n <= (tamaño * tamaño); n++)
+  {
+   //de izquierda a derecha
+   
+   for(x = inicio; x<= limite; x++)
+   {
+    matriz[inicio][x]=c++;
+   }
+   
+   //de arriaba - abajo
+   for(x=inicio+1; x<= limite; x++)
+   {
+    matriz[x][limite]=c++;
+   }
+   
+   //derecha a izquierda
+   for(x = limite-1; x >= inicio; x--)
+   {
+    matriz[limite][x]=c++;
+   }
+   //abajo arriba
+   for(x = limite-1; x >= inicio+1; x--)
+   {
+    matriz[x][inicio]=c++;
+   }
+   inicio=inicio+1;
+   limite=limite-1;
+  }
+  
+  //imprimo la matriz
+  System.out.println("La matriz en forma de caracol de "+tamaño+" dimensiones es:\n");
+  
+  for(y = 0; y < tamaño; y++)
+  {
+   for(x = 0; x < tamaño; x++)
+   {
+    System.out.print(matriz[y][x]+"\t");
+   }
+   System.out.println(" ");
+  }
+  
+  System.out.println("Digite el numero que dessea buscar:\n");
+  numero_buscar=leer.nextInt();
+  int bandera=0;
+  for(y = 0; y < tamaño; y++)
+  {
+   for(x = 0; x < tamaño; x++)
+   {
+    if ( numero_buscar == matriz[y][x])
+    {
+     System.out.println("El numero se encuentra en la posicion: "+y+","+x);
+     bandera=1;
+    }
+    
+   }
+  
+  }
+  if (bandera==0)
+  {
+   System.out.println("el numero no se encuentra en la matriz");
+  }
+ }
+}
