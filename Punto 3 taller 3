@@ -1,0 +1,74 @@
+#include<iostream>
+#include <string>
+#include <stdlib.h>
+#include <sstream>
+
+using namespace std;
+
+string NumberToString(int pNumber)
+{
+ ostringstream oOStrStream;
+ oOStrStream << pNumber;
+ return oOStrStream.str();
+}
+
+int main(int argc, char* argv[]){
+int m = 0 ;
+int npar = 0 ;
+int nimpar = 0;
+int npos = 0;
+int nneg = 0 ;
+
+string par, impar, pos, neg, x;
+cout << "ingrese las dimensiones de la Matriz: ";
+cin >> m ;
+int matriz [m][m];
+cout <<"los numeros aleatorios son: \n\n";
+
+
+	for (int i= 0 ;i<m ;i++){
+		for (int j= 0 ;j<m ;j++){
+			matriz[i][j] = rand()% 200 - 100;
+		}
+	}
+	
+	for (int i=0;i<m ;i++){
+		x = "";
+		for (int j= 0 ;j<m ;j++){
+			x = x + "[" + NumberToString(matriz[i][j])+ "]";
+		}
+		cout << x + "\n";	
+	}
+		
+	
+	
+	for(int i = 0;i<m;i++){
+		for(int j = 0; j<m;j++){
+			if(matriz[i][j]%2 == 0){
+				par++;
+				par = par + NumberToString(matriz[i][j]) + ",";
+			}
+			else if (matriz[i][j]%2 != 0){
+				impar ++ ;
+				impar = impar+ NumberToString(matriz[i][j]) + ",";	
+			}
+			if(matriz[i][j]< 0 ){
+				neg ++;
+				neg = neg + NumberToString(matriz[i][j]) + ",";
+			}
+			else if(matriz[i][j]>= 0){
+				pos++;
+				pos = pos + NumberToString(matriz[i][j]) + ",";			
+			}
+		}
+	}
+	cout <<"\n\nla cantidad de numeros pares encontrados son: " + NumberToString(par )+ "\n\n";
+	cout <<"la cantidad de numeros impares encontrados son: " + NumberToString(impar) + "\n\n";
+	cout <<"la cantidad de numeros negativos encontrados son: " + NumberToString(neg) + "\n\n";
+	cout <<"la cantidad de numeros positivos encontrados son: " + NumberToString(pos) + "\n\n";
+	cout <<"los numeros pares encontrados son: "+ par + "\n\n";
+	cout <<"los numeros impares encontrados son:" + impar + "\n\n";
+	cout <<"los numeros negativos encontrados son:" + neg + "\n\n";
+	cout <<"los numeros positivos encontrados son:" + pos + "\n\n";
+	
+}
