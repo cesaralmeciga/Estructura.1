@@ -2,7 +2,9 @@
 #include <string>
 #include <stdlib.h>
 #include <sstream>
-
+/Author Calmecigadi
+/date 25-10-11
+/Program that determines odd and even
 using namespace std;
 
 string NumberToString(int pNumber)
@@ -13,11 +15,12 @@ string NumberToString(int pNumber)
 }
 
 int main(int argc, char* argv[]){
+/Instantiate variables
 int m = 0 ;
-int npar = 0 ;
-int nimpar = 0;
-int npos = 0;
-int nneg = 0 ;
+int par = 0 ;
+int impar = 0;
+int pos = 0;
+int neg = 0 ;
 
 string par, impar, pos, neg, x;
 cout << "ingrese las dimensiones de la Matriz: ";
